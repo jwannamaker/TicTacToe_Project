@@ -70,6 +70,7 @@ public class TicTacToe extends Application {
 
     private void showGameResult(WinCondition winCondition) {
         Line line = new Line();
+        line.setStrokeWidth(5);
         line.setStartX(winCondition.tiles[0].getCenterX());
         line.setStartY(winCondition.tiles[0].getCenterY());
         line.setEndX(winCondition.tiles[0].getCenterX());
