@@ -97,8 +97,6 @@ public class BoardController {
             r.setFill(Color.TRANSPARENT);
         }
 
-
-
     }
 
     @FXML
