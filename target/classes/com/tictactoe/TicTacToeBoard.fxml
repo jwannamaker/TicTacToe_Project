@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="500" maxWidth="400" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tictactoe.BoardController">
+
+    <Line fx:id="winningLine" fill="black" stroke="black" strokeWidth="4" />
+
+    <StackPane maxHeight="100" maxWidth="300" translateY="-200">
+        <Label fx:id="gameLabel" alignment="CENTER" minHeight="400" minWidth="300" text="Tic-Tac-Toe" translateY="-24">
+            <font>
+                <Font name="Times New Roman bold" size="24" />
+            </font>
+        </Label>
+
+        <Button fx:id="startButton" minHeight="30" minWidth="135" onAction="#startingGame" text="Start New Game" translateY="15" />
+    </StackPane>
+
+    <StackPane fx:id="tile1" onMouseClicked="#playerAction">
+        <children>
+            <Rectangle height="100" stroke="black" width="100" />
+            <Label fx:id="box1" alignment="CENTER" text="">
+                <font>
+                    <Font name="Times Nex Roman bold" size="24" />
+                </font>
+            </Label>
+        </children>
+    </StackPane>
+
+    <StackPane fx:id="tile2" onMouseClicked="#playerAction">
+        <Rectangle height="100" stroke="black" width="100" />
+        <Label fx:id="box2" alignment="CENTER" text="">
+            <font>
+                <Font name="Times Nex Roman bold" size="24" />
+            </font>
+        </Label>
+    </StackPane>
+
+    <StackPane fx:id="tile3" onMouseClicked="#playerAction">
+        <Rectangle height="100" stroke="black" width="100" />
+        <Label fx:id="box3" alignment="CENTER" text="">
+            <font>
+                <Font name="Times Nex Roman bold" size="24" />
+            </font>
+        </Label>
+    </StackPane>
+
+    <StackPane fx:id="tile4" onMouseClicked="#playerAction">
+        <Rectangle height="100" stroke="black" width="100" />
+        <Label fx:id="box4" alignment="CENTER" text="">
+            <font>
+                <Font name="Times Nex Roman bold" size="24" />
+            </font>
+        </Label>
+    </StackPane>
+
+    <StackPane fx:id="tile5" onMouseClicked="#playerAction">
+        <Rectangle height="100" stroke="black" width="100" />
+        <Label fx:id="box5" alignment="CENTER" text="">
+            <font>
+                <Font name="Times Nex Roman bold" size="24" />
+            </font>
+        </Label>
+    </StackPane>
+
+    <StackPane fx:id="tile6" onMouseClicked="#playerAction">
+        <Rectangle height="100" stroke="black" width="100" />
+        <Label fx:id="box6" alignment="CENTER" text="">
+            <font>
+                <Font name="Times Nex Roman bold" size="24" />
+            </font>
+        </Label>
+    </StackPane>
+
+    <StackPane fx:id="tile7" onMouseClicked="#playerAction">
+        <Rectangle height="100" stroke="black" width="100" />
+        <Label fx:id="box7" alignment="CENTER" text="">
+            <font>
+                <Font name="Times Nex Roman bold" size="24" />
+            </font>
+        </Label>
+    </StackPane>
+
+    <StackPane fx:id="tile8" onMouseClicked="#playerAction">
+        <Rectangle height="100" stroke="black" width="100" />
+        <Label fx:id="box8" alignment="CENTER" text="">
+            <font>
+                <Font name="Times Nex Roman bold" size="24" />
+            </font>
+        </Label>
+    </StackPane>
+
+    <StackPane fx:id="tile9" onMouseClicked="#playerAction">
+        <Rectangle height="100" stroke="black" width="100" />
+        <Label fx:id="box9" alignment="CENTER"  text="" >
+            <font>
+                <Font size="52.0" />
+            </font>
+        </Label>
+    </StackPane>
+
+</StackPane>
