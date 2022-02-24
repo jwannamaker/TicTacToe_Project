@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -90,6 +91,14 @@ public class BoardController {
             }
         };
         winningLine.setVisible(false);
+
+        for(int index = 0; index < 9; index++) {
+            Rectangle r = (Rectangle) tiles.get(index).getChildren().get(0);
+            r.setFill(Color.TRANSPARENT);
+        }
+
+
+
     }
 
     @FXML
