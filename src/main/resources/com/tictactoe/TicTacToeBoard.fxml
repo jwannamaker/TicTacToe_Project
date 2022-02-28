@@ -17,8 +17,10 @@
                 <Font name="Times New Roman bold" size="24" />
             </font>
         </Label>
-
         <Button fx:id="startButton" minHeight="30" minWidth="135" onAction="#startingGame" text="Start New Game" translateY="15" />
+        <Button text="Main Menu " onAction="#switchMenuScene" translateY="-30" translateX="150"/>
+        <Button text="Reset Board" onAction="#resetBoard" translateY="0" translateX="150"/>
+        <Button text="Reset Score" onAction="#resetScore" translateY="30" translateX="150"/>
     </StackPane>
 
     <StackPane fx:id="tile1" onMouseClicked="#playerAction">
@@ -26,7 +28,7 @@
             <Rectangle height="100" stroke="black" width="100" />
             <Label fx:id="box1" alignment="CENTER" text="">
                 <font>
-                    <Font name="Times Nex Roman bold" size="24" />
+                    <Font name="Arial Black" size="72" />
                 </font>
             </Label>
         </children>
@@ -36,7 +38,7 @@
         <Rectangle height="100" stroke="black" width="100" />
         <Label fx:id="box2" alignment="CENTER" text="">
             <font>
-                <Font name="Times Nex Roman bold" size="24" />
+                <Font name="Arial Black" size="72" />
             </font>
         </Label>
     </StackPane>
@@ -45,7 +47,7 @@
         <Rectangle height="100" stroke="black" width="100" />
         <Label fx:id="box3" alignment="CENTER" text="">
             <font>
-                <Font name="Times Nex Roman bold" size="24" />
+                <Font name="Arial Black" size="72" />
             </font>
         </Label>
     </StackPane>
@@ -54,7 +56,7 @@
         <Rectangle height="100" stroke="black" width="100" />
         <Label fx:id="box4" alignment="CENTER" text="">
             <font>
-                <Font name="Times Nex Roman bold" size="24" />
+                <Font name="Arial Black" size="72" />
             </font>
         </Label>
     </StackPane>
@@ -63,7 +65,7 @@
         <Rectangle height="100" stroke="black" width="100" />
         <Label fx:id="box5" alignment="CENTER" text="">
             <font>
-                <Font name="Times Nex Roman bold" size="24" />
+                <Font name="Arial Black" size="72" />
             </font>
         </Label>
     </StackPane>
@@ -72,7 +74,7 @@
         <Rectangle height="100" stroke="black" width="100" />
         <Label fx:id="box6" alignment="CENTER" text="">
             <font>
-                <Font name="Times Nex Roman bold" size="24" />
+                <Font name="Arial Black" size="72" />
             </font>
         </Label>
     </StackPane>
@@ -81,7 +83,7 @@
         <Rectangle height="100" stroke="black" width="100" />
         <Label fx:id="box7" alignment="CENTER" text="">
             <font>
-                <Font name="Times Nex Roman bold" size="24" />
+                <Font name="Arial Black" size="72" />
             </font>
         </Label>
     </StackPane>
@@ -90,7 +92,7 @@
         <Rectangle height="100" stroke="black" width="100" />
         <Label fx:id="box8" alignment="CENTER" text="">
             <font>
-                <Font name="Times Nex Roman bold" size="24" />
+                <Font name="Arial Black" size="72" />
             </font>
         </Label>
     </StackPane>
@@ -99,9 +101,33 @@
         <Rectangle height="100" stroke="black" width="100" />
         <Label fx:id="box9" alignment="CENTER"  text="" >
             <font>
-                <Font size="52.0" />
+                <Font name="Arial Black" size="72" />
             </font>
         </Label>
     </StackPane>
+
+    <Label fx:id="ScoreBoard" alignment="CENTER" minHeight="30" minWidth="30" text="---------- Score Board ----------" translateY="170">
+        <font>
+            <Font name="Times New Roman bold" size="24" />
+        </font>
+    </Label>
+
+    <Label fx:id="ScoreBoardO" alignment="CENTER" minHeight="30" minWidth="30" text="O-Wins: 0" translateX="-100" translateY="200">
+        <font>
+            <Font name="Times New Roman bold" size="16" />
+        </font>
+    </Label>
+
+    <Label fx:id="ScoreBoardX" alignment="CENTER" minHeight="30" minWidth="30" text="X-Wins: 0" translateX="0" translateY="200">
+        <font>
+            <Font name="Times New Roman bold" size="16" />
+        </font>
+    </Label>
+
+    <Label fx:id="ScoreBoardDraw" alignment="CENTER" minHeight="30" minWidth="30" text="Draws: 0" translateX="100" translateY="200">
+        <font>
+            <Font name="Times New Roman bold" size="16" />
+        </font>
+    </Label>
 
 </StackPane>

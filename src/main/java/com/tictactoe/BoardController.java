@@ -13,19 +13,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
-public class BoardController {
+public class BoardController extends MiniMax {
 
     @FXML
     private Button startButton;
     @FXML
     private Label gameLabel;
-
     @FXML
     private Label box1;
     @FXML
@@ -44,7 +43,13 @@ public class BoardController {
     private Label box8;
     @FXML
     private Label box9;
-
+    @FXML
+    private Label ScoreBoardO;
+    @FXML
+    private Label ScoreBoardX;
+    @FXML
+    private Label ScoreBoardDraw;
+    private int xWin, oWin, draw;
     @FXML
     private StackPane tile1;
     @FXML
@@ -89,14 +94,13 @@ public class BoardController {
                 tiles.get(i).setTranslateY((row * 100) - 100);
                 i++;
             }
-        };
+        }
         winningLine.setVisible(false);
 
         for(int index = 0; index < 9; index++) {
             Rectangle r = (Rectangle) tiles.get(index).getChildren().get(0);
             r.setFill(Color.TRANSPARENT);
         }
-
     }
 
     @FXML
@@ -105,6 +109,8 @@ public class BoardController {
         tiles.forEach(stackPane -> stackPane.setDisable(false));
         box.forEach(label -> label.setText(""));
         winningLine.setVisible(false);
+        gameLabel.setText("Player " + playerTurn + "'s turn");
+        if (playerTurn == 'X') computerPlayerMove(box);
     }
 
     @FXML
@@ -114,34 +120,32 @@ public class BoardController {
                 setPlayerSymbol(box.get(i));
                 tiles.get(i).setDisable(true);
                 checkIfGameIsOver();
-
             }
         }
     }
 
     public void setPlayerSymbol(Label label){
-        if(playerTurn == 'X'){
+        if (playerTurn == 'X') {
             label.setText("X");
             playerTurn = 'O';
-        } else{
+        } else {
             label.setText("O");
             playerTurn = 'X';
+            if (!fullBoard()) computerPlayerMove(box);
         }
         gameLabel.setText("Player " + playerTurn + "'s turn");
     }
 
     public boolean fullBoard() {
-        boolean isFull =    box1.getText() != "" &&
-                box2.getText() != "" &&
-                box3.getText() != "" &&
-                box4.getText() != "" &&
-                box5.getText() != "" &&
-                box6.getText() != "" &&
-                box7.getText() != "" &&
-                box8.getText() != "" &&
-                box9.getText() != "";
-
-        return isFull;
+        return !Objects.equals(box1.getText(), "") &&
+               !Objects.equals(box2.getText(), "") &&
+               !Objects.equals(box3.getText(), "") &&
+               !Objects.equals(box4.getText(), "") &&
+               !Objects.equals(box5.getText(), "") &&
+               !Objects.equals(box6.getText(), "") &&
+               !Objects.equals(box7.getText(), "") &&
+               !Objects.equals(box8.getText(), "") &&
+               !Objects.equals(box9.getText(), "");
     }
 
     public void gameEnd(List<StackPane> winningLabels) {
@@ -163,7 +167,6 @@ public class BoardController {
     }
 
     public void checkIfGameIsOver(){
-
         for (int a = 0; a < 8; a++) {
             String line = switch (a) {
                 case 0 -> box1.getText() + box2.getText() + box3.getText();
@@ -187,26 +190,53 @@ public class BoardController {
                 case 5 -> { winningLabels.add(tile1); winningLabels.add(tile4); winningLabels.add(tile7);}
                 case 6 -> { winningLabels.add(tile2); winningLabels.add(tile5); winningLabels.add(tile8);}
                 case 7 -> { winningLabels.add(tile3); winningLabels.add(tile6); winningLabels.add(tile9);}
-
             }
 
             //X winner
             if (line.equals("XXX")) {
                 gameLabel.setText("X won!");
+                ScoreBoardX.setText("X-Wins: " + ++xWin);
                 gameEnd(winningLabels);
                 a=7;
             }
             //O winner
             else if (line.equals("OOO")) {
                 gameLabel.setText("O won!");
+                ScoreBoardO.setText("O-Wins: " + ++oWin);
                 gameEnd(winningLabels);
                 a=7;
             }
+            // Draw
             else if(fullBoard() && a == 7) {
                 gameLabel.setText("There is no winner");
+                ScoreBoardDraw.setText("Draws: " + ++draw);
                 gameEnd(null);
             }
         }
     }
 
+    @FXML
+    public void switchMenuScene(ActionEvent event) throws IOException {
+        FXMLLoader root = new FXMLLoader(Main.class.getResource("TitleScreen.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root.load(), 600,500);
+        stage.setScene(scene);
+    }
+
+    @FXML
+    public void resetBoard(ActionEvent actionEvent) {
+        gameLabel.setText("Tic-Tac-Toe");
+        tiles.forEach(stackPane -> stackPane.setDisable(false));
+        box.forEach(label -> label.setText(""));
+        winningLine.setVisible(false);
+        gameEnd(null);
+    }
+
+    @FXML
+    public void resetScore(ActionEvent actionEvent) {
+        ScoreBoardO.setText("O-Wins: 0");
+        ScoreBoardX.setText("X-Wins: 0");
+        ScoreBoardDraw.setText("Draws: 0");
+        oWin = xWin = draw = 0;
+    }
 }
