@@ -20,62 +20,19 @@ import java.util.List;
 import java.util.Objects;
 
 public class BoardController extends MiniMax {
-
     @FXML
     private Button startButton;
     @FXML
-    private Label gameLabel;
+    private Label gameLabel, ScoreBoardO, ScoreBoardX, ScoreBoardDraw;
     @FXML
-    private Label box1;
+    private Label box1, box2, box3, box4, box5, box6, box7, box8, box9;
     @FXML
-    private Label box2;
-    @FXML
-    private Label box3;
-    @FXML
-    private Label box4;
-    @FXML
-    private Label box5;
-    @FXML
-    private Label box6;
-    @FXML
-    private Label box7;
-    @FXML
-    private Label box8;
-    @FXML
-    private Label box9;
-    @FXML
-    private Label ScoreBoardO;
-    @FXML
-    private Label ScoreBoardX;
-    @FXML
-    private Label ScoreBoardDraw;
-    private int xWin, oWin, draw;
-    @FXML
-    private StackPane tile1;
-    @FXML
-    private StackPane tile2;
-    @FXML
-    private StackPane tile3;
-    @FXML
-    private StackPane tile4;
-    @FXML
-    private StackPane tile5;
-    @FXML
-    private StackPane tile6;
-    @FXML
-    private StackPane tile7;
-    @FXML
-    private StackPane tile8;
-    @FXML
-    private StackPane tile9;
-
+    private StackPane tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9;
     @FXML
     private Line winningLine;
-
     private List<StackPane> tiles;
-
     private List<Label> box;
-
+    private int xWin, oWin, draw;
     private char playerTurn = 'X';
 
     @FXML
@@ -110,7 +67,7 @@ public class BoardController extends MiniMax {
         box.forEach(label -> label.setText(""));
         winningLine.setVisible(false);
         gameLabel.setText("Player " + playerTurn + "'s turn");
-        if (playerTurn == 'X') computerPlayerMove(box);
+        if (playerTurn == 'X') setComputerMove();
     }
 
     @FXML
@@ -131,7 +88,7 @@ public class BoardController extends MiniMax {
         } else {
             label.setText("O");
             playerTurn = 'X';
-            if (!fullBoard()) computerPlayerMove(box);
+            if (!fullBoard()) setComputerMove();
         }
         gameLabel.setText("Player " + playerTurn + "'s turn");
     }
@@ -238,5 +195,19 @@ public class BoardController extends MiniMax {
         ScoreBoardX.setText("X-Wins: 0");
         ScoreBoardDraw.setText("Draws: 0");
         oWin = xWin = draw = 0;
+    }
+
+    public void setComputerMove() {
+        String[] boardState = new String[9];
+        int move;
+
+        for (int i = 0; i < 9; ++i)
+            boardState[i] = box.get(i).getText();
+
+        move = getComputerMove(boardState);
+
+        setPlayerSymbol(box.get(move));
+        tiles.get(move).setDisable(true);
+        checkIfGameIsOver();
     }
 }

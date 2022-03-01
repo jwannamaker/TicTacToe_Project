@@ -1,6 +1,5 @@
 package com.tictactoe;
-import javafx.scene.control.Label;
-import java.util.List;
+
 import java.util.Objects;
 
 public class MiniMax {
@@ -75,12 +74,7 @@ public class MiniMax {
         }
     }
 
-    public void computerPlayerMove(List<Label> box) {
-        String[] boardState = new String[9];
-
-        for (int i = 0; i < 9; ++i)
-            boardState[i] = box.get(i).getText();
-
+    public int getComputerMove(String[] boardState) {
         int maxEval = -999;
         int pos = -1;
 
@@ -95,18 +89,6 @@ public class MiniMax {
                     maxEval = moveEval;
             }
         }
-        System.out.print("X chooses position: ");
-        switch (pos) {
-            case 0 -> System.out.println("0,0");
-            case 1 -> System.out.println("0,1");
-            case 2 -> System.out.println("0,2");
-            case 3 -> System.out.println("1,0");
-            case 4 -> System.out.println("1,1");
-            case 5 -> System.out.println("1,2");
-            case 6 -> System.out.println("2,0");
-            case 7 -> System.out.println("2,1");
-            case 8 -> System.out.println("2,2");
-            default -> System.out.println("No Moves Remaining.");
-        }
+        return pos;
     }
 }
