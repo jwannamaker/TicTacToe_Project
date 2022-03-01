@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class MiniMax {
-    private final String[] boardState = new String[9];
-
     Boolean isMovesLeft(String[] boardState) {
         for (int i = 0; i < 9; ++i)
             if (Objects.equals(boardState[i], ""))
@@ -78,6 +76,8 @@ public class MiniMax {
     }
 
     public void computerPlayerMove(List<Label> box) {
+        String[] boardState = new String[9];
+
         for (int i = 0; i < 9; ++i)
             boardState[i] = box.get(i).getText();
 
