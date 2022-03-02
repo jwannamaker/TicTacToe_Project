@@ -5,15 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane   prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tictactoe.TitleController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tictactoe.TitleController">
    <children>
       <Label alignment="CENTER" layoutX="25.0" layoutY="107.0" text="Welcome to IJLA Tic-Tac-Toe" textAlignment="CENTER">
          <font>
             <Font size="43.0" />
          </font>
       </Label>
-      <Button layoutX="261.0" layoutY="213.0" mnemonicParsing="false" onAction="#switchBoardScene" text="Start">
+      <Button layoutX="66.0" layoutY="214.0" mnemonicParsing="false" onAction="#switchBoardScene" text="Single Player">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button layoutX="389.0" layoutY="214.0" mnemonicParsing="false" onAction="#switchBoardScene2" text="Two Player">
          <font>
             <Font size="23.0" />
          </font>

@@ -34,6 +34,7 @@ public class BoardController extends MiniMax {
     private List<Label> box;
     private int xWin, oWin, draw;
     private char playerTurn = 'X';
+    public static boolean twoPlayer = false;
 
     @FXML
     public void initialize() {
@@ -66,7 +67,9 @@ public class BoardController extends MiniMax {
         box.forEach(label -> label.setText(""));
         winningLine.setVisible(false);
         gameLabel.setText("Player " + playerTurn + "'s turn");
-        if (playerTurn == 'X') setComputerMove();
+        if(!twoPlayer) {
+            if (playerTurn == 'X') setComputerMove();
+        }
     }
 
     @FXML
@@ -87,7 +90,9 @@ public class BoardController extends MiniMax {
         } else {
             label.setText("O");
             playerTurn = 'X';
-            if (!fullBoard()) setComputerMove();
+            if(!twoPlayer) {
+                if (!fullBoard()) setComputerMove();
+            }
         }
         gameLabel.setText("Player " + playerTurn + "'s turn");
     }
