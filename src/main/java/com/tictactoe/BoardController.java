@@ -42,7 +42,6 @@ public class BoardController extends MiniMax {
 
         tiles.forEach(stackPane -> stackPane.setMaxSize(100,100));
         tiles.forEach(stackPane -> stackPane.setDisable(true));
-        Rectangle e = new Rectangle();
 
         int i = 0;
         for(int row = 0; row < 3; row++) {
