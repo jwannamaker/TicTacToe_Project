@@ -158,14 +158,14 @@ public class BoardController extends MiniMax {
                 gameLabel.setText("X won!");
                 ScoreBoardX.setText("X-Wins: " + ++xWin);
                 gameEnd(winningLabels);
-                a=7;
+                a=8;
             }
             //O winner
             else if (line.equals("OOO")) {
                 gameLabel.setText("O won!");
                 ScoreBoardO.setText("O-Wins: " + ++oWin);
                 gameEnd(winningLabels);
-                a=7;
+                a=8;
             }
             // Draw
             else if(fullBoard() && a == 7) {
