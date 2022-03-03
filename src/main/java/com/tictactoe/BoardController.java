@@ -212,6 +212,5 @@ public class BoardController extends MiniMax {
 
         setPlayerSymbol(box.get(move));
         tiles.get(move).setDisable(true);
-        checkIfGameIsOver();
     }
 }
