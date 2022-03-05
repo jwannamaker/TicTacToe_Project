@@ -75,9 +75,8 @@ public class BoardController extends MiniMax {
     @FXML
     public void playerAction(MouseEvent e) {
         for (int i = 0; i < 9; i++) {
-            if(e.getSource().equals(tiles.get(i))) {
+            if(e.getSource().equals(tiles.get(i)) && box.get(i).getText().isEmpty()) {
                 setPlayerSymbol(box.get(i));
-                tiles.get(i).setDisable(true);
                 checkIfGameIsOver();
             }
         }
