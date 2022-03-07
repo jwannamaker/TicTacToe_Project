@@ -44,20 +44,22 @@ public class MiniMax {
         return 0;
     }
 
-    int miniMax(String[] boardState, int depth, Boolean isMax) {
+    int miniMax(String[] boardState, Boolean isMax, int alpha, int beta) {
         int score = evaluate(boardState);
 
-        if (score == 10) return score;
-        if (score == -10) return score;
-        if (!isMovesLeft(boardState)) return 0;
+        if (score != 0 || !isMovesLeft(boardState))
+            return score;
 
         if (isMax) {
             int maxEval = -999;
             for (int i = 0; i < 9; ++i) {
                 if (Objects.equals(boardState[i], "")) {
                     boardState[i] = "X";
-                    maxEval = Math.max(maxEval, miniMax(boardState, depth + 1, false));
+                    maxEval = Math.max(maxEval, miniMax(boardState, false, alpha, beta));
+                    alpha = Math.max(alpha, maxEval);
                     boardState[i] = "";
+
+                    if (beta <= alpha) break;
                 }
             }
             return maxEval;
@@ -66,8 +68,11 @@ public class MiniMax {
             for (int i = 0; i < 9; ++i) {
                 if (Objects.equals(boardState[i], "")) {
                     boardState[i] = "O";
-                    minEval = Math.min(minEval, miniMax(boardState, depth + 1, true));
+                    minEval = Math.min(minEval, miniMax(boardState, true, alpha, beta));
+                    beta = Math.min(beta, minEval);
                     boardState[i] = "";
+
+                    if (beta <= alpha) break;
                 }
             }
             return minEval;
@@ -81,7 +86,7 @@ public class MiniMax {
         for (int i = 0; i < 9; ++i) {
             if (Objects.equals(boardState[i], "")) {
                 boardState[i] = "X";
-                int moveEval = Math.max(maxEval, miniMax(boardState, 0, false));
+                int moveEval = miniMax(boardState, false, -999, 999);
                 boardState[i] = "";
 
                 if (moveEval > maxEval)
