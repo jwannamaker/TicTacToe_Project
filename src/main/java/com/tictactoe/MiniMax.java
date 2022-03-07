@@ -89,9 +89,10 @@ public class MiniMax {
                 int moveEval = miniMax(boardState, false, -999, 999);
                 boardState[i] = "";
 
-                if (moveEval > maxEval)
+                if (moveEval > maxEval) {
                     pos = i;
                     maxEval = moveEval;
+                }
             }
         }
         return pos;

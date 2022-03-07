@@ -106,7 +106,7 @@
         </Label>
     </StackPane>
 
-    <Label fx:id="ScoreBoard" alignment="CENTER" minHeight="30" minWidth="30" text="---------- Score Board ----------" translateY="170">
+    <Label fx:id="ScoreBoard" alignment="CENTER" minHeight="30" minWidth="30" text="Score Board" translateY="170">
         <font>
             <Font name="Times New Roman bold" size="24" />
         </font>

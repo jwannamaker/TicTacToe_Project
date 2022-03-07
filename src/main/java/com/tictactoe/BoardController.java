@@ -202,14 +202,10 @@ public class BoardController extends MiniMax {
 
     public void setComputerMove() {
         String[] boardState = new String[9];
-        int move;
 
         for (int i = 0; i < 9; ++i)
             boardState[i] = box.get(i).getText();
 
-        move = getComputerMove(boardState);
-
-        setPlayerSymbol(box.get(move));
-        tiles.get(move).setDisable(true);
+        setPlayerSymbol(box.get(getComputerMove(boardState)));
     }
 }
