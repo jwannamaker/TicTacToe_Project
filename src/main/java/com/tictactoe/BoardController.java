@@ -179,7 +179,7 @@ public class BoardController extends MiniMax {
     public void switchMenuScene(ActionEvent event) throws IOException {
         FXMLLoader root = new FXMLLoader(Main.class.getResource("TitleScreen.fxml"));
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root.load(), 600,500);
+        Scene scene = new Scene(root.load(), 600,400);
         stage.setScene(scene);
     }
 

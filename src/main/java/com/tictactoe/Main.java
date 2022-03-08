@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader titleScreenFxmlLoader= new FXMLLoader(Main.class.getResource("TitleScreen.fxml"));
-        Scene scene = new Scene(titleScreenFxmlLoader.load(), 600, 500);
+        Scene scene = new Scene(titleScreenFxmlLoader.load(), 600, 400);
         stage.setTitle("Tic-Tac-Toe");
         stage.setScene(scene);
         stage.show();
