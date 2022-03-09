@@ -101,12 +101,12 @@ public class BoardUI extends MiniMax {
     }
 
     private void drawWinningLine(List<StackPane> winningLabels) {
-        winningLine.setStartX(winningLabels.get(0).getLayoutX());
-        winningLine.setStartY(winningLabels.get(0).getLayoutY());
-        winningLine.setEndX(winningLabels.get(2).getLayoutX());
-        winningLine.setEndY(winningLabels.get(2).getLayoutY());
-        winningLine.setLayoutX(winningLabels.get(0).getLayoutX() + 20);
-        winningLine.setLayoutY(winningLabels.get(0).getLayoutY() - 30);
+        winningLine.setStartX(winningLabels.get(0).getLayoutX() + 50);
+        winningLine.setStartY(winningLabels.get(0).getLayoutY() + 50);
+        winningLine.setEndX(winningLabels.get(2).getLayoutX() + 50);
+        winningLine.setEndY(winningLabels.get(2).getLayoutY() + 50);
+        winningLine.setLayoutX(winningLine.getLayoutX());
+        winningLine.setLayoutY(winningLine.getLayoutY());
     }
 
     public void checkIfGameIsOver(){
