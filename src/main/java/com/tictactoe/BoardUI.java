@@ -34,7 +34,7 @@ public class BoardUI extends MiniMax {
     private List<Label> box;
     private int xWin, oWin, draw;
     private char playerTurn = 'X';
-    public static boolean twoPlayer = false;
+    public static boolean twoPlayer;
 
     public void initialize() {
         box = new ArrayList<>(Arrays.asList(box1, box2, box3, box4, box5, box6, box7, box8, box9));

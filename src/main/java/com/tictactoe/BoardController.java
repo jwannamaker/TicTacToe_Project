@@ -34,7 +34,7 @@ public class BoardController extends MiniMax {
     private List<Label> box;
     private int xWin, oWin, draw;
     private char playerTurn = 'X';
-    public static boolean twoPlayer = false;
+    public static boolean twoPlayer;
 
     @FXML
     public void initialize() {

@@ -27,7 +27,7 @@ public class TitleController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root.load(), 600,400);
         stage.setScene(scene);
-        BoardController.twoPlayer=false;
+        BoardUI.twoPlayer=false;
     }
 
     @FXML
@@ -36,7 +36,7 @@ public class TitleController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root.load(), 600,400);
         stage.setScene(scene);
-        BoardController.twoPlayer=true;
+        BoardUI.twoPlayer=true;
     }
 
     public void backButtonClicked(ActionEvent actionEvent) {
