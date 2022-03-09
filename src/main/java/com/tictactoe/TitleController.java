@@ -23,18 +23,18 @@ public class TitleController {
 
     @FXML
     public void switchBoardScene(ActionEvent event) throws IOException {
-        root = new FXMLLoader(Main.class.getResource("TicTacToeBoard.fxml"));
+        root = new FXMLLoader(Main.class.getResource("BoardUI.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root.load(), 400,500);
+        scene = new Scene(root.load(), 600,400);
         stage.setScene(scene);
         BoardController.twoPlayer=false;
     }
 
     @FXML
     public void switchBoardScene2(ActionEvent event) throws IOException {
-        root = new FXMLLoader(Main.class.getResource("TicTacToeBoard.fxml"));
+        root = new FXMLLoader(Main.class.getResource("BoardUI.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root.load(), 400,500);
+        scene = new Scene(root.load(), 600,400);
         stage.setScene(scene);
         BoardController.twoPlayer=true;
     }

@@ -17,10 +17,10 @@
                 <Font name="Times New Roman bold" size="24" />
             </font>
         </Label>
-        <Button fx:id="startButton" minHeight="30" minWidth="135" onAction="#startingGame" text="Start New Game" translateY="15" />
-        <Button text="Main Menu " onAction="#switchMenuScene" translateY="-30" translateX="150"/>
-        <Button text="Reset Board" onAction="#resetBoard" translateY="0" translateX="150"/>
-        <Button text="Reset Score" onAction="#resetScore" translateY="30" translateX="150"/>
+        <Button fx:id="startButton" minHeight="30" minWidth="135" onAction="#startingGame" style="-fx-background-color: darkgray;" text="Start New Game" translateY="15" />
+        <Button text="Main Menu " onAction="#switchMenuScene" style="-fx-background-color: darkgray;" translateY="-30" translateX="150"/>
+        <Button text="Reset Board" onAction="#resetBoard" style="-fx-background-color: darkgray;" translateY="0" translateX="150"/>
+        <Button text="Reset Score" onAction="#resetScore" style="-fx-background-color: darkgray;" translateY="30" translateX="150"/>
     </StackPane>
 
     <StackPane fx:id="tile1" onMouseClicked="#playerAction">
