@@ -202,8 +202,8 @@ public class BoardUI extends MiniMax {
                       (Objects.equals(box.get(6).getText(), "") ? "  " : box.get(6).getText()) + "  |  " +
                       (Objects.equals(box.get(7).getText(), "") ? "  " : box.get(7).getText()) + "  |  " +
                       (Objects.equals(box.get(8).getText(), "") ? "  " : box.get(8).getText());
-
         gameHistory.getItems().add(move);
+        gameHistory.scrollTo(gameHistory.getItems().size());
     }
 
     public void setComputerMove() {
