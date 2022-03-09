@@ -21,47 +21,47 @@
       </Label>
       <Button fx:id="localButton" layoutX="236.0" layoutY="155.0" mnemonicParsing="false" onAction="#switchBoardScene2" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="Local Game" visible="false">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino LinotypePalatino Linotype" size="18.0" />
          </font>
       </Button>
       <Button fx:id="onlineButton" disable="true" layoutX="236.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchBoardScene2" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="Online Game" visible="false">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino Linotype" size="18.0" />
          </font>
       </Button>
       <Button fx:id="onePlayerButton" layoutX="236.0" layoutY="155.0" mnemonicParsing="false" onAction="#onePlayerClicked" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="One Player">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino Linotype" size="18.0" />
          </font>
       </Button>
       <Button fx:id="twoPlayerButton" layoutX="236.0" layoutY="210.0" mnemonicParsing="false" onAction="#twoPlayerClicked" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="Two Players">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino Linotype" size="18.0" />
          </font>
       </Button>
       <Button fx:id="easyButton" disable="true" layoutX="236.0" layoutY="100.0" mnemonicParsing="false" onAction="#switchBoardScene" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="Easy" visible="false">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino Linotype" size="18.0" />
          </font>
       </Button>
       <Button fx:id="moderateButton" disable="true" layoutX="236.0" layoutY="155.0" mnemonicParsing="false" onAction="#switchBoardScene" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="Moderate" visible="false">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino Linotype" size="18.0" />
          </font>
       </Button>
       <Button fx:id="impossibleButton" layoutX="236.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchBoardScene" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="Impossible" visible="false">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino Linotype" size="18.0" />
          </font>
       </Button>
       <Button fx:id="backButton" layoutX="236.0" layoutY="265.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="Back" visible="false">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino Linotype" size="18.0" />
          </font>
       </Button>
       <Button fx:id="quitButton" layoutX="236.0" layoutY="265.0" mnemonicParsing="false" onAction="#quitButtonClicked" prefHeight="44.0" prefWidth="130.0" style="-fx-background-color: darkgray;" text="Quit">
          <font>
-            <Font name="Garamond" size="18.0" />
+            <Font name="Palatino Linotype" size="18.0" />
          </font>
       </Button>
    </children>

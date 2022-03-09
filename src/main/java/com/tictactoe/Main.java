@@ -4,15 +4,25 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 import java.io.IOException;
 
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
+
+
+
         FXMLLoader titleScreenFxmlLoader= new FXMLLoader(Main.class.getResource("TitleScreen.fxml"));
         Scene scene = new Scene(titleScreenFxmlLoader.load(), 600, 400);
         stage.setTitle("Tic-Tac-Toe");
+
+        stage.getIcons().add(new Image("C:\\Users\\shinu\\IdeaProjects\\TicTacToe_Project\\src\\main\\resources\\imgs\\background.jpg"));
+
+
+
         stage.setScene(scene);
         stage.show();
     }
