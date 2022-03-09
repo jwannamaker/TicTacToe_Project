@@ -11,7 +11,7 @@
    <children>
       <ImageView blendMode="LIGHTEN" fitHeight="603.0" fitWidth="600.0" layoutY="-54.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../imgs/3dgifmaker20182.gif" />
+            <Image url="@../../imgs/topScrollBG.gif" />
          </image>
       </ImageView>
       <Label fx:id="titleScreenLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="27.0" prefHeight="58.0" prefWidth="600.0" text="Welcome to Tic-Tac-Toe" textAlignment="JUSTIFY" wrapText="true">
