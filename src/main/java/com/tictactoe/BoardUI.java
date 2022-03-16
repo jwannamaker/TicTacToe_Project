@@ -13,13 +13,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-public class BoardUI extends MiniMax {
-    public ListView<String> gameHistory;
+public class BoardUI {
+    @FXML
+    private ListView<String> gameHistory;
     @FXML
     private Button startButton;
     @FXML
@@ -33,14 +31,15 @@ public class BoardUI extends MiniMax {
     private List<StackPane> tiles;
     private List<Label> box;
     private int xWin, oWin, draw;
-    private char playerTurn = 'X';
-    public static boolean twoPlayer;
+    private BoardState boardState;
 
     public void initialize() {
         box = new ArrayList<>(Arrays.asList(box1, box2, box3, box4, box5, box6, box7, box8, box9));
         tiles = new ArrayList<>(Arrays.asList(tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9));
         tiles.forEach(stackPane -> stackPane.setDisable(true));
         winningLine.setVisible(false);
+        boardState = new BoardState();
+        boardState.register(BoardUI.this);
     }
 
     @FXML
@@ -49,46 +48,22 @@ public class BoardUI extends MiniMax {
         tiles.forEach(stackPane -> stackPane.setDisable(false));
         box.forEach(label -> label.setText(""));
         winningLine.setVisible(false);
-        gameLabel.setText("Player " + playerTurn + "'s turn");
-        if(!twoPlayer) {
-            if (playerTurn == 'X') setComputerMove();
-        }
+        gameLabel.setText("Player " + boardState.getPlayer() + "'s turn");
+        notifyBoard(0, 0);
     }
 
     @FXML
     public void playerAction(MouseEvent e) {
         for (int i = 0; i < 9; i++) {
             if(e.getSource().equals(tiles.get(i)) && box.get(i).getText().isEmpty()) {
-                setPlayerSymbol(box.get(i));
-                checkIfGameIsOver();
+                notifyBoard(i, 1);
             }
         }
     }
 
     public void setPlayerSymbol(Label label){
-        if (playerTurn == 'X') {
-            label.setText("X");
-            playerTurn = 'O';
-        } else {
-            label.setText("O");
-            playerTurn = 'X';
-            if(!twoPlayer) {
-                if (!fullBoard()) setComputerMove();
-            }
-        }
-        gameLabel.setText("Player " + playerTurn + "'s turn");
-    }
-
-    public boolean fullBoard() {
-        return !Objects.equals(box1.getText(), "") &&
-                !Objects.equals(box2.getText(), "") &&
-                !Objects.equals(box3.getText(), "") &&
-                !Objects.equals(box4.getText(), "") &&
-                !Objects.equals(box5.getText(), "") &&
-                !Objects.equals(box6.getText(), "") &&
-                !Objects.equals(box7.getText(), "") &&
-                !Objects.equals(box8.getText(), "") &&
-                !Objects.equals(box9.getText(), "");
+        label.setText(boardState.getPlayer() == 'X' ? "O" : "X");
+        gameLabel.setText("Player " + boardState.getPlayer() + "'s turn");
     }
 
     public void gameEnd(List<StackPane> winningLabels) {
@@ -109,7 +84,9 @@ public class BoardUI extends MiniMax {
         winningLine.setLayoutY(winningLine.getLayoutY());
     }
 
-    public void checkIfGameIsOver(){
+    public void checkIfGameIsOver(char state){
+        if (state == 'N') return;
+
         for (int a = 0; a < 8; a++) {
             String line = switch (a) {
                 case 0 -> box1.getText() + box2.getText() + box3.getText();
@@ -136,11 +113,13 @@ public class BoardUI extends MiniMax {
             }
 
             //X winner
+            assert line != null;
             if (line.equals("XXX")) {
                 gameLabel.setText("X won!");
                 ScoreBoardX.setText("" + ++xWin);
                 updateGameHistory("X");
                 gameEnd(winningLabels);
+                notifyBoard(0,3);
                 a=8;
             }
             //O winner
@@ -149,14 +128,17 @@ public class BoardUI extends MiniMax {
                 ScoreBoardO.setText("" + ++oWin);
                 updateGameHistory("O");
                 gameEnd(winningLabels);
+                notifyBoard(0,3);
+
                 a=8;
             }
             // Draw
-            else if(fullBoard() && a == 7) {
+            else if(a == 7) {
                 gameLabel.setText("Draw Game");
                 ScoreBoardDraw.setText("" + ++draw);
                 updateGameHistory("Draw");
                 gameEnd(null);
+                notifyBoard(0,3);
             }
         }
     }
@@ -167,6 +149,7 @@ public class BoardUI extends MiniMax {
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root.load(), 600,400);
         stage.setScene(scene);
+        boardState.unregister(BoardUI.this);
     }
 
     @FXML
@@ -176,6 +159,7 @@ public class BoardUI extends MiniMax {
         box.forEach(label -> label.setText(""));
         winningLine.setVisible(false);
         gameEnd(null);
+        notifyBoard(0, 2);
     }
 
     @FXML
@@ -187,6 +171,7 @@ public class BoardUI extends MiniMax {
         gameHistory.getItems().clear();
     }
 
+    @FXML
     public void updateGameHistory(String result) {
         String s = switch (result) {
             case "X" -> "\t\tPlayer X Win\n";
@@ -202,16 +187,15 @@ public class BoardUI extends MiniMax {
                       (Objects.equals(box.get(6).getText(), "") ? "  " : box.get(6).getText()) + "  |  " +
                       (Objects.equals(box.get(7).getText(), "") ? "  " : box.get(7).getText()) + "  |  " +
                       (Objects.equals(box.get(8).getText(), "") ? "  " : box.get(8).getText());
-
         gameHistory.getItems().add(move);
     }
 
-    public void setComputerMove() {
-        String[] boardState = new String[9];
+    public void notifyBoard(int move, int arg) {
+        boardState.getUpdate(move, arg);
+    }
 
-        for (int i = 0; i < 9; ++i)
-            boardState[i] = box.get(i).getText();
-
-        setPlayerSymbol(box.get(getComputerMove(boardState)));
+    public void update(int move, char state) {
+                setPlayerSymbol(box.get(move));
+                checkIfGameIsOver(state);
     }
 }

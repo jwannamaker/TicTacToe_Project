@@ -16,6 +16,8 @@ public class TitleController {
     @FXML
     public Button easyButton, moderateButton, impossibleButton, backButton, localButton, onlineButton, onePlayerButton, twoPlayerButton, quitButton;
     public Label titleScreenLabel;
+    private static boolean twoPlayer;
+    private static boolean localGame;
     private Stage stage;
     private Scene scene;
     private FXMLLoader root;
@@ -26,7 +28,6 @@ public class TitleController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root.load(), 600,400);
         stage.setScene(scene);
-        BoardUI.twoPlayer=false;
     }
 
     @FXML
@@ -35,9 +36,9 @@ public class TitleController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root.load(), 600,400);
         stage.setScene(scene);
-        BoardUI.twoPlayer=true;
     }
 
+    @FXML
     public void backButtonClicked(ActionEvent actionEvent) {
         onePlayerButton.setVisible(true);
         twoPlayerButton.setVisible(true);
@@ -51,6 +52,7 @@ public class TitleController {
         titleScreenLabel.setText("Welcome to Tic-Tac-Toe");
     }
 
+    @FXML
     public void onePlayerClicked(ActionEvent actionEvent) {
         onePlayerButton.setVisible(false);
         twoPlayerButton.setVisible(false);
@@ -59,9 +61,11 @@ public class TitleController {
         moderateButton.setVisible(true);
         impossibleButton.setVisible(true);
         backButton.setVisible(true);
+        twoPlayer=false;
         titleScreenLabel.setText("Select a Difficulty");
     }
 
+    @FXML
     public void twoPlayerClicked(ActionEvent actionEvent) {
         onePlayerButton.setVisible(false);
         twoPlayerButton.setVisible(false);
@@ -69,13 +73,21 @@ public class TitleController {
         localButton.setVisible(true);
         onlineButton.setVisible(true);
         backButton.setVisible(true);
+        twoPlayer=true;
         titleScreenLabel.setText("Select a Connection Method");
     }
 
+    @FXML
     public void quitButtonClicked(ActionEvent actionEvent) {
         Platform.exit();
         System.exit(0);
     }
+
+    public static boolean getTwoPlayer() {
+        return twoPlayer;
+    }
+
+    public static boolean getLocalGame() {
+        return localGame;
+    }
 }
-
-
